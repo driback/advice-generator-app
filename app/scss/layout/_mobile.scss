@@ -1,0 +1,96 @@
+@use "../util/" as u;
+
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+
+  &__box {
+    width: clamp(21.5rem, 50%, 35rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 4.5rem;
+    padding-inline: clamp(1rem, 1.5rem, 3rem);
+    border-radius: 0.85rem;
+    background-color: u.$dark-grayish-blue;
+    gap: 2rem;
+    position: relative;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 0.85rem;
+    color: u.$neon-green;
+    letter-spacing: 4px;
+  }
+
+  &__advice {
+    position: relative;
+    text-align: center;
+    line-height: 1.5;
+    quotes: "\201c""\201d";
+    &:before {
+      content: open-quote;
+    }
+    &:after {
+      content: close-quote;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1rem;
+    display: block;
+    background: url("http://127.0.0.1:5500/images/pattern-divider-mobile.svg")
+      no-repeat center;
+  }
+
+  &__button {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    place-items: center;
+    transform: translateY(50%);
+    // border: 1px solid red;
+
+    > div {
+      position: relative;
+      width: 70px;
+      height: 70px;
+      // border: 1px solid red;
+      border-radius: 10rem;
+      background: url("http://127.0.0.1:5500/images/icon-dice.svg") no-repeat
+        center center;
+      background-color: u.$neon-green;
+      cursor: pointer;
+
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: inherit;
+        border-radius: inherit;
+        filter: blur(1rem);
+        z-index: -1;
+        opacity: 0;
+        transition: all 150ms ease-in-out;
+        transform: scale(0.8);
+      }
+
+      &:hover::before {
+        transform: scale(1);
+        opacity: 0.9;
+      }
+    }
+  }
+}
