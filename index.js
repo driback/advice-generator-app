@@ -11,7 +11,7 @@ const fetchNewAdvice = async () => {
 
 const renderAdvice = (adviceObj) => {
   const { id, advice } = adviceObj;
-  adviceId.textContent = `adivice #${id}`;
+  adviceId.textContent = `advice #${id}`;
   adiceContent.textContent = advice;
 };
 
